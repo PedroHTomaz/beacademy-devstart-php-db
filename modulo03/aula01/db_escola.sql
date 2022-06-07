@@ -1,0 +1,46 @@
+-- PARA CRIAR UM BANCO DE DADOS --
+CREATE DATABASE db_escola;
+
+-- PARA UTILIZARMOS O BANCO DE DADOS, ANTES É NECESSÁRIO SELECIONAR --
+USE db_escola;
+
+-- CRIANDO UMA TABELA DE DADOS. DENTRO DO BLOCO, DEFINIREMOS AS COLUNAS. PRIMEIRO NOME E DEPOIS O TIPO.
+CREATE TABLE tb_professor (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE tb_aluno (
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    matricula CHAR(10) UNIQUE NOT NULL
+);
+
+CREATE TABLE tb_curso (
+
+)
+
+CREATE TABLE tb_disciplina (
+
+)
+
+-- EXCLUIR TABELA --
+DROP TABLE tb_professor;
+
+-- INSERIR DADOS --
+INSERT INTO tb_professor (nome, email, cpf)
+VALUES (
+    'Pedro', 'pedro@email.com', '12345678912'
+);
+
+INSERT INTO tb_professor (nome, email, cpf)
+VALUES (
+    'Luan', 'luan@email.com', '12365478899'
+);
+
+-- SELECIONAR OS DADOS --
+SELECT * FROM tb_professor;
+
