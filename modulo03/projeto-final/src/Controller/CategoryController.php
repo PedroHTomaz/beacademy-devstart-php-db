@@ -14,13 +14,38 @@ class CategoryController extends AbstractController
 
         $result = $con->prepare('SELECT * FROM tb_category');
         $result->execute();
-
-        $cat = $result->fetch(\PDO::FETCH_ASSOC);
-
-        echo $cat['id'];
-        echo $cat['name'];
-        echo $cat['description'];
         
-        parent::render('category/list');
+        parent::render('category/list', $result);
+    }
+
+    public function addAction(): void
+    {
+        if ($_POST) {
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+
+            $query = "INSERT INTO tb_category (name, description) VALUE ('{$name}', '{$description}')";
+
+            $con = Connection::getConnection();
+
+            $result = $con->prepare($query);
+            $result->execute();
+
+            echo 'Pronto! Categoria inserida.';
+        }
+        
+        parent::render('category/add');
+    }
+
+    public function removeAction(): void
+    {
+        $con = Connection::getConnection();
+
+        $id = $_GET['id'];
+        
+        $query = "DELETE FROM tb_category WHERE id='{$id}'";
+
+        $result = $con->prepare($query);
+        $result->execute();
     }
 }
