@@ -14,8 +14,8 @@ CREATE TABLE tb_product (
     name VARCHAR(30) NOT NULL,
     description VARCHAR(100) NOT NULL,
     photo VARCHAR(255) NOT NULL,
-    valor FLOAT(5,2) NOT NULL,
-    categoria_id INT(11) NOT NULL,
+    value FLOAT(5,2) NOT NULL,
+    category_id INT(11) NOT NULL,
     quantity INT(5) NOT NULL,
     created_at DATETIME NOT NULL
 );
@@ -26,4 +26,8 @@ VALUES
 ('Escritório', 'Canetas, cadernos, folhas, etc'),
 ('Eletrônicos', 'TVs, som, etc');
 
-INSERT INTO tb_product (name, description, photo, valor, categoria_id, quantity)
+INSERT INTO tb_product (name, description, photo, value, category_id, quantity, created_at)
+VALUES
+('Teclado', 'Teclado de excelente qualidade', 'https://static.mundomax.com.br/produtos/70550/550/1.webp', 159.99, 1, 50, '2022-06-09 14:10:00'),
+('Teclado 2', 'Teclado de excelente qualidade', 'https://static.mundomax.com.br/produtos/70550/550/1.webp', 159.99, 1, 50, '2022-06-09 14:10:00'),
+('Teclado 3', 'Teclado de excelente qualidade', 'https://static.mundomax.com.br/produtos/70550/550/1.webp', 159.99, 1, 50, '2022-06-09 14:10:00');
