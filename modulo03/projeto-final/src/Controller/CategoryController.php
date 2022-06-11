@@ -21,9 +21,8 @@ class CategoryController extends AbstractController
     public function addAction(): void
     {
         if ($_POST) {
-            $name = $_POST['name'];
-            $description = $_POST['description'];
 
+            extract($_POST);
             $query = "INSERT INTO tb_category (name, description) VALUE ('{$name}', '{$description}')";
 
             $con = Connection::getConnection();
@@ -31,7 +30,7 @@ class CategoryController extends AbstractController
             $result = $con->prepare($query);
             $result->execute();
 
-            echo 'Pronto! Categoria inserida com sucesso.';
+            parent::renderMessage('Pronto! Categoria adicionada com sucesso.');
         }
         
         parent::render('category/add');
@@ -48,7 +47,7 @@ class CategoryController extends AbstractController
         $result = $con->prepare($query);
         $result->execute();
 
-        echo 'Pronto! Categoria excluida com sucesso.';
+        parent::renderMessage('Pronto! Categoria excluida com sucesso.');
     }
 
     public function uptadeAction(): void
@@ -66,7 +65,7 @@ class CategoryController extends AbstractController
             $result = $con->prepare($queryUpdate);
             $result = execute();
 
-            echo 'Pronto! Categoria atualizada com sucesso.';
+            parent::renderMessage('Pronto! Categoria atualizada com sucesso.');
         }
 
         $query = "SELECT * FROM tb_category; WHERE id='{$id}'";

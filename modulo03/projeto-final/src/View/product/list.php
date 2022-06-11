@@ -5,12 +5,12 @@
     <a href="/produtos/relatorio" class="btn btn-dark">Gerar PDF</a>
 </div>
 
-<table>
+<table class="table table-hover table-stripped">
     <thead class="table-dark">
         <tr>
             <th>#ID</th>
             <th>Nome</th>
-            <th>Description</th>
+            <th>Descrição</th>
             <th>Imagem</th>
             <th>Preço</th>
             <th>Quantidade</th>
