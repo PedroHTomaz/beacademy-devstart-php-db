@@ -1,6 +1,6 @@
 <h1>Cadastrar Categoria</h1>
 
-<form action="POST">
+<form method="POST">
     <label for="name">Nome</label>
     <input id="name" name="name" type="text" class="form-control mb-3">
 

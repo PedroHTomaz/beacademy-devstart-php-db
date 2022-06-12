@@ -22,7 +22,9 @@ class CategoryController extends AbstractController
     {
         if ($_POST) {
 
-            extract($_POST);
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+
             $query = "INSERT INTO tb_category (name, description) VALUE ('{$name}', '{$description}')";
 
             $con = Connection::getConnection();
@@ -50,31 +52,31 @@ class CategoryController extends AbstractController
         parent::renderMessage('Pronto! Categoria excluida com sucesso.');
     }
 
-    public function uptadeAction(): void
+    public function updateAction(): void
     {
         $id = $_GET['id'];
 
         $con = Connection::getConnection();
 
-        if($_POST) {
+        if($_POST){
             $newName = $_POST['name'];
             $newDescription = $_POST['description'];
 
-            $queryUpdate = "UPDATE tb_category SET name='{$newName}', description='{$newDescription}' WHERE id='{$id}'";
+            $queryUpdate = "UPDATE tb_category SET name='{$newName}', description= '{$newDescription}' WHERE id='{$id}'";
 
             $result = $con->prepare($queryUpdate);
-            $result = execute();
+            $result-> execute();
 
             parent::renderMessage('Pronto! Categoria atualizada com sucesso.');
         }
 
-        $query = "SELECT * FROM tb_category; WHERE id='{$id}'";
+        $query = "SELECT * FROM tb_category WHERE id='{$id}'";
 
         $result = $con->prepare($query);
         $result->execute();
 
-        $data = $result->fetch(\PDO::FETCH_ASSOC);
+        $data =$result->fetch(\PDO::FETCH_ASSOC);
 
-        parent::render('category/edit', $data);
+        parent::render('category/edit',$data);
     }
 }

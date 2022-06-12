@@ -25,7 +25,12 @@ class ProductController extends AbstractController
 
         if ($_POST) {
 
-            extract($_POST);
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $value = $_POST['value'];
+            $photo = $_POST['photo'];
+            $quantity = $_POST['quantity'];
+            $categoryId = $_POST['category'];
             $createdAt = date('Y-m-d H:i:s');
 
             $query = "INSERT INTO tb_product (name, description, value, photo, quantity, category_id, created_at) VALUES ('{$name}', '{$description}', '{$value}', '{$photo}', '{$quantity}', '{$categoryId}', '{$createdAt}');";
@@ -45,27 +50,30 @@ class ProductController extends AbstractController
     public function editAction(): void 
     {
         $id = $_GET['id'];
-        
+
         $con = Connection::getConnection();
 
-        if($_POST) {
-
-            extract($_POST);
+        if($_POST){
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $value = $_POST['value'];
+            $photo = $_POST['photo'];
+            $quantity = $_POST['quantity'];
 
             $query = "
-                UPDATE tb_product SET
-                    name='{$name}',
-                    description='{$description}',
-                    value='{$value}',
-                    photo='{$photo}',
-                    quantity='{$quantity}',
-                WHERE id='{$id}'
+            UPDATE tb_product SET
+                name='{$name}',
+                description='{$description}',
+                value='{$value}', 
+                photo='{$photo}',
+                quantity='{$quantity}'
+            WHERE id='{$id}'   
             ";
 
             $resultUpdate = $con->prepare($query);
-            $resultUpdate = execute();
+            $resultUpdate->execute();
 
-            echo 'Pronto! Produto atualizado com sucesso.';
+            parent::renderMessage('Pronto! Produto atualizado com sucesso.');
         }
 
         $product = $con->prepare("SELECT * FROM tb_product WHERE id='{$id}'");

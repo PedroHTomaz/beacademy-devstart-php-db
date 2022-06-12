@@ -1,6 +1,6 @@
 <h1>Novo Produto</h1>
 
-<form action="" method="post">
+<form method="post">
     <label for="category">Categoria</label>
     <select name="category" id="category" class="form-select mb-3">
         <option selected> -- Selecione -- </option>
