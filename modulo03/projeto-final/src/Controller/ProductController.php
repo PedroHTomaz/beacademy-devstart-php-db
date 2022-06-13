@@ -25,6 +25,8 @@ class ProductController extends AbstractController
 
         if ($_POST) {
 
+            date_default_timezone_set('America/Sao_Paulo');
+
             $name = $_POST['name'];
             $description = $_POST['description'];
             $value = $_POST['value'];

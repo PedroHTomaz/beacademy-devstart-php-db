@@ -12,9 +12,9 @@ CREATE TABLE tb_category (
 CREATE TABLE tb_product (
     id INT (11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
-    description VARCHAR(100) NOT NULL,
+    description VARCHAR(150) NOT NULL,
     photo VARCHAR(255) NOT NULL,
-    value FLOAT(5,2) NOT NULL,
+    value FLOAT(7,2) NOT NULL,
     category_id INT(11) NOT NULL,
     quantity INT(5) NOT NULL,
     created_at DATETIME NOT NULL
