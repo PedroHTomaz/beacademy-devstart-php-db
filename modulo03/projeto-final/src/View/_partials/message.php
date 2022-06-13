@@ -15,5 +15,3 @@
         <?php echo $message;?>
         <a href="/produtos" class='btn btn-outline-dark'>OK</a>
     </div>
-</body>
-</html>
